@@ -19,11 +19,10 @@
             border: 2px dotted black;
             width: fit-content;
             padding: 10px;
+            background-color: grey;
         }
         .timer-background:hover{
-            background-color: rgb(240, 240, 240);
             scale: 1.1;
-
         }
     </style>
     <script>
@@ -44,10 +43,13 @@
             buttonStart.click(function () {
                 clearInterval(interval);
                 interval = setInterval(startTimer, 10);
+                $("#timer").css("background-color", "green")
             })
 
             buttonStop.click(function () {
                 clearInterval(interval);
+                $("#timer").css("background-color", "red")
+
             })
 
             buttonReset.click(function () {
@@ -56,6 +58,8 @@
                 seconds = "00";
                 appendTens.html(tens);
                 appendSeconds.html(seconds);
+                $("#timer").css("background-color", "")
+
             })
 
             function startTimer() {
