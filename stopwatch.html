@@ -40,6 +40,19 @@
             var buttonReset = $('#button-reset');
             var interval;
 
+            buttonStart.addClass("button")
+            buttonReset.addClass("button")
+            buttonStop.addClass("button")
+
+            $(".button").css({
+
+                backgroundColor: "yellow",
+                padding: "10px",
+                borderRadius: "25px",
+
+
+            })
+
             buttonStart.click(function () {
                 clearInterval(interval);
                 interval = setInterval(startTimer, 10);
