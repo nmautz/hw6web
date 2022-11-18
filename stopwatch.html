@@ -39,6 +39,7 @@
             var buttonStop = $('#button-stop');
             var buttonReset = $('#button-reset');
             var interval;
+            var animationInterval;
 
             buttonStart.addClass("button")
             buttonReset.addClass("button")
@@ -56,17 +57,22 @@
             buttonStart.click(function () {
                 clearInterval(interval);
                 interval = setInterval(startTimer, 10);
+                startAnimate()
+                animationInterval = setInterval(startAnimate, 1000)
                 $("#timer").css("background-color", "green")
             })
 
             buttonStop.click(function () {
                 clearInterval(interval);
+                stopAnimate()
                 $("#timer").css("background-color", "red")
+
 
             })
 
             buttonReset.click(function () {
                 clearInterval(interval);
+                stopAnimate()
                 tens = "00";
                 seconds = "00";
                 appendTens.html(tens);
@@ -74,6 +80,22 @@
                 $("#timer").css("background-color", "")
 
             })
+
+            var animateDirection = true
+            function startAnimate(){
+                if(animateDirection){
+                    $("#timer").animate({opacity: 0.8}, 1000);
+
+                }else{
+                    $("#timer").animate({opacity: 1}, 1000);
+                }
+                animateDirection = !animateDirection
+            }
+            function stopAnimate(){
+                clearInterval(animationInterval)
+                $("#timer").css("opacity", 1)
+
+            }
 
             function startTimer() {
                 tens++;
