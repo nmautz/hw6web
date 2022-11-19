@@ -24,12 +24,39 @@
         .timer-background:hover{
             scale: 1.1;
         }
+
+        h1, h2{
+            background-color: wheat;
+        }
     </style>
     <script>
         $(document).ready(function () {
 
 
             $("#timer").addClass("timer-background")
+
+
+
+            $("body").css({
+
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+
+            })
+            $(".wrapper").css({
+
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "column",
+                border: "5px dashed black",
+                width: "60vw",
+                height: "80vh",
+
+            })
+
+            $("h1").css("textDecoration", "underline")
 
             var seconds = 00;
             var tens = 00;
@@ -54,6 +81,12 @@
 
             })
 
+            $(".wrapper").append(`<img id="background-image">`)
+            $("#background-image").attr("src", "http://cdn.akc.org/content/article-body-image/funny-basset_hound_yawning.jpg")
+                .css({
+                    position: "absolute",
+                    zIndex: -5,
+                })
             buttonStart.click(function () {
                 clearInterval(interval);
                 interval = setInterval(startTimer, 10);
